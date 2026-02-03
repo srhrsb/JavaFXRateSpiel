@@ -11,10 +11,12 @@ public class Controller {
     @FXML
     private TextField number;
     private int targetNumber;
+    private int tries;
 
     @FXML
     private void initialize(){
         targetNumber = (int)(Math.random()*100);
+        tries = 1;
     }
 
     @FXML
@@ -29,9 +31,10 @@ public class Controller {
             setFeedback("Deine Nummer ist zu klein");
         }
         else{
-            setFeedback("Herzlichen Glückwunsch, Gewonnen!");
+            setFeedback("Herzlichen Glückwunsch, Gewonnen! Versuche: "+tries);
             replay();
         }
+        tries++;
     }
 
     private void setFeedback( String fb ){
@@ -42,4 +45,10 @@ public class Controller {
         initialize();
         number.clear();
     }
+
+    //ToDo: Hausaufgabe
+    //Schreiben Sie den Score in eine Datei und laden Sie die gespeicherte
+    //Zahl dann beim Start wieder. Immer wenn nun ein besserer Score
+    //erspielt wurde, soll die Zahl in der Datei überschrieben werden
+    //In einem zusätzlichen Label soll dann Highscore ausgegeben werden.
 }
